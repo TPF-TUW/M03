@@ -51,12 +51,14 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.textEdit3 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.txeDATE = new DevExpress.XtraEditors.TextEdit();
+            this.txeCREATE = new DevExpress.XtraEditors.TextEdit();
+            this.cbeColorType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txeColorName = new DevExpress.XtraEditors.TextEdit();
+            this.txeColorNo = new DevExpress.XtraEditors.TextEdit();
+            this.gcColor = new DevExpress.XtraGrid.GridControl();
+            this.gvColor = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.txeColorID = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -65,22 +67,22 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.textEdit4 = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
+            this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeDATE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeColorType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeColorName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeColorNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvColor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeColorID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -89,13 +91,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -149,6 +149,7 @@
             this.bbiNew.Id = 16;
             this.bbiNew.ImageOptions.ImageUri.Uri = "New";
             this.bbiNew.Name = "bbiNew";
+            this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNew_ItemClick);
             // 
             // bbiEdit
             // 
@@ -156,6 +157,7 @@
             this.bbiEdit.Id = 17;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.Name = "bbiEdit";
+            this.bbiEdit.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiDelete
             // 
@@ -163,6 +165,7 @@
             this.bbiDelete.Id = 18;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDelete.Name = "bbiDelete";
+            this.bbiDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiRefresh
             // 
@@ -170,6 +173,7 @@
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // bbiPrint
             // 
@@ -184,6 +188,7 @@
             this.bbiSave.Id = 21;
             this.bbiSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSave.ImageOptions.SvgImage")));
             this.bbiSave.Name = "bbiSave";
+            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -267,13 +272,13 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.textEdit5);
-            this.layoutControl1.Controls.Add(this.textEdit4);
-            this.layoutControl1.Controls.Add(this.comboBoxEdit1);
-            this.layoutControl1.Controls.Add(this.textEdit3);
-            this.layoutControl1.Controls.Add(this.textEdit2);
-            this.layoutControl1.Controls.Add(this.gridControl1);
-            this.layoutControl1.Controls.Add(this.textEdit1);
+            this.layoutControl1.Controls.Add(this.txeDATE);
+            this.layoutControl1.Controls.Add(this.txeCREATE);
+            this.layoutControl1.Controls.Add(this.cbeColorType);
+            this.layoutControl1.Controls.Add(this.txeColorName);
+            this.layoutControl1.Controls.Add(this.txeColorNo);
+            this.layoutControl1.Controls.Add(this.gcColor);
+            this.layoutControl1.Controls.Add(this.txeColorID);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 160);
             this.layoutControl1.Name = "layoutControl1";
@@ -283,74 +288,96 @@
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // comboBoxEdit1
+            // txeDATE
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(80, 76);
-            this.comboBoxEdit1.MenuManager = this.ribbonControl;
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.txeDATE.Location = new System.Drawing.Point(80, 378);
+            this.txeDATE.MenuManager = this.ribbonControl;
+            this.txeDATE.Name = "txeDATE";
+            this.txeDATE.Properties.ReadOnly = true;
+            this.txeDATE.Size = new System.Drawing.Size(362, 20);
+            this.txeDATE.StyleController = this.layoutControl1;
+            this.txeDATE.TabIndex = 22;
+            // 
+            // txeCREATE
+            // 
+            this.txeCREATE.Location = new System.Drawing.Point(80, 354);
+            this.txeCREATE.MenuManager = this.ribbonControl;
+            this.txeCREATE.Name = "txeCREATE";
+            this.txeCREATE.Properties.ReadOnly = true;
+            this.txeCREATE.Size = new System.Drawing.Size(362, 20);
+            this.txeCREATE.StyleController = this.layoutControl1;
+            this.txeCREATE.TabIndex = 21;
+            // 
+            // cbeColorType
+            // 
+            this.cbeColorType.Location = new System.Drawing.Point(80, 76);
+            this.cbeColorType.MenuManager = this.ribbonControl;
+            this.cbeColorType.Name = "cbeColorType";
+            this.cbeColorType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            this.cbeColorType.Properties.Items.AddRange(new object[] {
             "Finished Goods",
             "Fabric",
             "Accessory",
             "Packaging"});
-            this.comboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEdit1.Size = new System.Drawing.Size(162, 20);
-            this.comboBoxEdit1.StyleController = this.layoutControl1;
-            this.comboBoxEdit1.TabIndex = 20;
+            this.cbeColorType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbeColorType.Size = new System.Drawing.Size(162, 20);
+            this.cbeColorType.StyleController = this.layoutControl1;
+            this.cbeColorType.TabIndex = 20;
             // 
-            // textEdit3
+            // txeColorName
             // 
-            this.textEdit3.EditValue = "";
-            this.textEdit3.Location = new System.Drawing.Point(80, 52);
-            this.textEdit3.MenuManager = this.ribbonControl;
-            this.textEdit3.Name = "textEdit3";
-            this.textEdit3.Properties.MaxLength = 50;
-            this.textEdit3.Size = new System.Drawing.Size(362, 20);
-            this.textEdit3.StyleController = this.layoutControl1;
-            this.textEdit3.TabIndex = 19;
+            this.txeColorName.EditValue = "";
+            this.txeColorName.Location = new System.Drawing.Point(80, 52);
+            this.txeColorName.MenuManager = this.ribbonControl;
+            this.txeColorName.Name = "txeColorName";
+            this.txeColorName.Properties.MaxLength = 50;
+            this.txeColorName.Size = new System.Drawing.Size(362, 20);
+            this.txeColorName.StyleController = this.layoutControl1;
+            this.txeColorName.TabIndex = 19;
             // 
-            // textEdit2
+            // txeColorNo
             // 
-            this.textEdit2.EditValue = "";
-            this.textEdit2.Location = new System.Drawing.Point(80, 28);
-            this.textEdit2.MenuManager = this.ribbonControl;
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.MaxLength = 20;
-            this.textEdit2.Size = new System.Drawing.Size(162, 20);
-            this.textEdit2.StyleController = this.layoutControl1;
-            this.textEdit2.TabIndex = 18;
+            this.txeColorNo.EditValue = "";
+            this.txeColorNo.Location = new System.Drawing.Point(80, 28);
+            this.txeColorNo.MenuManager = this.ribbonControl;
+            this.txeColorNo.Name = "txeColorNo";
+            this.txeColorNo.Properties.MaxLength = 20;
+            this.txeColorNo.Size = new System.Drawing.Size(162, 20);
+            this.txeColorNo.StyleController = this.layoutControl1;
+            this.txeColorNo.TabIndex = 18;
             // 
-            // gridControl1
+            // gcColor
             // 
-            this.gridControl1.Location = new System.Drawing.Point(451, 30);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.ribbonControl;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(534, 363);
-            this.gridControl1.TabIndex = 8;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gcColor.Location = new System.Drawing.Point(451, 30);
+            this.gcColor.MainView = this.gvColor;
+            this.gcColor.MenuManager = this.ribbonControl;
+            this.gcColor.Name = "gcColor";
+            this.gcColor.Size = new System.Drawing.Size(534, 363);
+            this.gcColor.TabIndex = 8;
+            this.gcColor.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvColor});
             // 
-            // gridView1
+            // gvColor
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowAutoFilterRow = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gvColor.GridControl = this.gcColor;
+            this.gvColor.Name = "gvColor";
+            this.gvColor.OptionsBehavior.Editable = false;
+            this.gvColor.OptionsView.ShowAutoFilterRow = true;
+            this.gvColor.OptionsView.ShowGroupPanel = false;
+            this.gvColor.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvColor_RowCellClick);
             // 
-            // textEdit1
+            // txeColorID
             // 
-            this.textEdit1.Location = new System.Drawing.Point(80, 4);
-            this.textEdit1.MenuManager = this.ribbonControl;
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Mask.EditMask = "d";
-            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(83, 20);
-            this.textEdit1.StyleController = this.layoutControl1;
-            this.textEdit1.TabIndex = 4;
+            this.txeColorID.Location = new System.Drawing.Point(80, 4);
+            this.txeColorID.MenuManager = this.ribbonControl;
+            this.txeColorID.Name = "txeColorID";
+            this.txeColorID.Properties.Mask.EditMask = "d";
+            this.txeColorID.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txeColorID.Properties.ReadOnly = true;
+            this.txeColorID.Size = new System.Drawing.Size(83, 20);
+            this.txeColorID.StyleController = this.layoutControl1;
+            this.txeColorID.TabIndex = 4;
             // 
             // Root
             // 
@@ -375,7 +402,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.textEdit1;
+            this.layoutControlItem1.Control = this.txeColorID;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(163, 24);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(163, 24);
@@ -390,7 +417,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(163, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(289, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(279, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
@@ -398,7 +425,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(242, 24);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(210, 24);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(200, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup4
@@ -413,7 +440,7 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.gridControl1;
+            this.layoutControlItem5.Control = this.gcColor;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(538, 367);
@@ -422,7 +449,7 @@
             // 
             // layoutControlItem14
             // 
-            this.layoutControlItem14.Control = this.textEdit2;
+            this.layoutControlItem14.Control = this.txeColorNo;
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem14.MaxSize = new System.Drawing.Size(242, 24);
             this.layoutControlItem14.MinSize = new System.Drawing.Size(242, 24);
@@ -434,7 +461,7 @@
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.textEdit3;
+            this.layoutControlItem2.Control = this.txeColorName;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(442, 24);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(442, 24);
@@ -444,17 +471,9 @@
             this.layoutControlItem2.Text = "Color Name";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(73, 14);
             // 
-            // emptySpaceItem4
-            // 
-            this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 96);
-            this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(452, 254);
-            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // layoutControlItem6
             // 
-            this.layoutControlItem6.Control = this.comboBoxEdit1;
+            this.layoutControlItem6.Control = this.cbeColorType;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem6.MaxSize = new System.Drawing.Size(242, 24);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(242, 24);
@@ -469,44 +488,20 @@
             this.emptySpaceItem5.AllowHotTrack = false;
             this.emptySpaceItem5.Location = new System.Drawing.Point(242, 72);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(210, 24);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(200, 24);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // textEdit4
+            // emptySpaceItem4
             // 
-            this.textEdit4.Location = new System.Drawing.Point(80, 354);
-            this.textEdit4.MenuManager = this.ribbonControl;
-            this.textEdit4.Name = "textEdit4";
-            this.textEdit4.Properties.ReadOnly = true;
-            this.textEdit4.Size = new System.Drawing.Size(362, 20);
-            this.textEdit4.StyleController = this.layoutControl1;
-            this.textEdit4.TabIndex = 21;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.textEdit4;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 350);
-            this.layoutControlItem3.MaxSize = new System.Drawing.Size(442, 24);
-            this.layoutControlItem3.MinSize = new System.Drawing.Size(442, 24);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(442, 24);
-            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem3.Text = "Created By";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(73, 14);
-            // 
-            // textEdit5
-            // 
-            this.textEdit5.Location = new System.Drawing.Point(80, 378);
-            this.textEdit5.MenuManager = this.ribbonControl;
-            this.textEdit5.Name = "textEdit5";
-            this.textEdit5.Properties.ReadOnly = true;
-            this.textEdit5.Size = new System.Drawing.Size(362, 20);
-            this.textEdit5.StyleController = this.layoutControl1;
-            this.textEdit5.TabIndex = 22;
+            this.emptySpaceItem4.AllowHotTrack = false;
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 96);
+            this.emptySpaceItem4.Name = "emptySpaceItem4";
+            this.emptySpaceItem4.Size = new System.Drawing.Size(442, 254);
+            this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.textEdit5;
+            this.layoutControlItem4.Control = this.txeDATE;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 374);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(442, 24);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(442, 24);
@@ -515,6 +510,18 @@
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "Created Date";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(73, 14);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.txeCREATE;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 350);
+            this.layoutControlItem3.MaxSize = new System.Drawing.Size(442, 24);
+            this.layoutControlItem3.MinSize = new System.Drawing.Size(442, 24);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(442, 24);
+            this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem3.Text = "Created By";
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(73, 14);
             // 
             // XtraForm1
             // 
@@ -526,17 +533,21 @@
             this.Controls.Add(this.ribbonControl);
             this.Name = "XtraForm1";
             this.Ribbon = this.ribbonControl;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "M03 : Color Master";
+            this.Load += new System.EventHandler(this.XtraForm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeDATE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeColorType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeColorName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeColorNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvColor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txeColorID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -545,13 +556,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -580,24 +589,24 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txeColorID;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gcColor;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvColor;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit cbeColorType;
+        private DevExpress.XtraEditors.TextEdit txeColorName;
+        private DevExpress.XtraEditors.TextEdit txeColorNo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem5;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
+        private DevExpress.XtraEditors.TextEdit txeDATE;
+        private DevExpress.XtraEditors.TextEdit txeCREATE;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
