@@ -37,9 +37,6 @@ namespace M03
 
         private void LoadData()
         {
-            txeCREATE.EditValue = "0";
-            txeDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-
             StringBuilder sbSQL = new StringBuilder();
             sbSQL.Append("SELECT OIDCOLOR AS No, ColorNo, ColorName, ColorType, CreatedBy, CreatedDate ");
             sbSQL.Append("FROM ProductColor ");
@@ -54,6 +51,9 @@ namespace M03
             txeColorNo.EditValue = "";
             txeColorName.EditValue = "";
             cbeColorType.EditValue = "";
+
+            txeCREATE.EditValue = "0";
+            txeDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
         private int findColorType(string ColorType)
