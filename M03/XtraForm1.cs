@@ -5,6 +5,7 @@ using DevExpress.LookAndFeel;
 using DevExpress.Utils.Extensions;
 using DBConnection;
 using MDS00;
+using System.Drawing;
 
 namespace M03
 {
@@ -38,11 +39,20 @@ namespace M03
         private void LoadData()
         {
             StringBuilder sbSQL = new StringBuilder();
-            sbSQL.Append("SELECT OIDCOLOR AS No, ColorNo, ColorName, ColorType, CreatedBy, CreatedDate ");
+            sbSQL.Append("SELECT OIDCOLOR AS No, ColorNo, ColorName, ColorType, CASE WHEN ColorType=0 THEN 'Finished Goods' ELSE CASE WHEN ColorType=1 THEN 'Fabric' ELSE CASE WHEN ColorType=2 THEN 'Accessory' ELSE CASE WHEN ColorType=3 THEN 'Packaging' ELSE '' END END END END AS ColorTypeName, CreatedBy, CreatedDate ");
             sbSQL.Append("FROM ProductColor ");
             sbSQL.Append("ORDER BY ColorType, ColorName, OIDCOLOR ");
             new ObjDevEx.setGridControl(gcColor, gvColor, sbSQL).getData(false, false, true, true);
 
+            sbSQL.Clear();
+            sbSQL.Append("SELECT '0' AS ID, 'Finished Goods' AS ColorType ");
+            sbSQL.Append("UNION ALL ");
+            sbSQL.Append("SELECT '1' AS ID, 'Fabric' AS ColorType ");
+            sbSQL.Append("UNION ALL ");
+            sbSQL.Append("SELECT '2' AS ID, 'Accessory' AS ColorType ");
+            sbSQL.Append("UNION ALL ");
+            sbSQL.Append("SELECT '3' AS ID, 'Packaging' AS ColorType ");
+            new ObjDevEx.setGridLookUpEdit(cbeColorType, sbSQL, "ColorType", "ID").getData();
         }
 
         private void NewData()
@@ -52,64 +62,21 @@ namespace M03
             txeColorName.EditValue = "";
             cbeColorType.EditValue = "";
 
+            lblStatus.Text = "* Add Color";
+            lblStatus.ForeColor = Color.Green;
+
             txeCREATE.EditValue = "0";
             txeDATE.EditValue = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
-        private int findColorType(string ColorType)
-        {
-            int return_value = 999;
-            switch (ColorType)
-            {
-                case "Finished Goods":
-                    return_value = 0;
-                    break;
-                case "Fabric":
-                    return_value = 1;
-                    break;
-                case "Accessory":
-                    return_value = 2;
-                    break;
-                case "Packaging":
-                    return_value = 3;
-                    break;
-                default:
-                    return_value = 999;
-                    break;
-            }
-            return return_value;
-        }
-
-        private string findColorTypeName(string ColorType)
-        {
-            string return_value = "";
-            switch (ColorType)
-            {
-                case "0":
-                    return_value = "Finished Goods";
-                    break;
-                case "1":
-                    return_value = "Fabric";
-                    break;
-                case "2":
-                    return_value = "Accessory";
-                    break;
-                case "3":
-                    return_value = "Packaging";
-                    break;
-                default:
-                    return_value = "";
-                    break;
-            }
-            return return_value;
-        }
-
         private void gvColor_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
+            lblStatus.Text = "* Edit Color";
+            lblStatus.ForeColor = Color.Red;
             txeColorID.EditValue = gvColor.GetFocusedRowCellValue("No").ToString();
             txeColorNo.EditValue = gvColor.GetFocusedRowCellValue("ColorNo").ToString();
             txeColorName.EditValue = gvColor.GetFocusedRowCellValue("ColorName").ToString();
-            cbeColorType.EditValue = findColorTypeName(gvColor.GetFocusedRowCellValue("ColorType").ToString());
+            cbeColorType.EditValue = gvColor.GetFocusedRowCellValue("ColorType").ToString();
 
             txeCREATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedBy").ToString();
             txeDATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedDate").ToString();
@@ -123,17 +90,17 @@ namespace M03
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (txeColorNo.EditValue.ToString() == "")
+            if (txeColorNo.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please input color no.");
                 txeColorNo.Focus();
             }
-            else if (txeColorName.EditValue.ToString() == "")
+            else if (txeColorName.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please input color name.");
                 txeColorName.Focus();
             }
-            else if (cbeColorType.EditValue.ToString() == "")
+            else if (cbeColorType.Text.Trim() == "")
             {
                 FUNC.msgWarning("Please select color type.");
                 cbeColorType.Focus();
@@ -144,26 +111,27 @@ namespace M03
                 {
                     StringBuilder sbSQL = new StringBuilder();
                     //CalendarMaster
-                    int ComType = findColorType(cbeColorType.EditValue.ToString());
+
+                    int ComType = Convert.ToInt32(cbeColorType.EditValue.ToString());      
 
                     string strCREATE = "0";
-                    if (txeCREATE.EditValue != null)
+                    if (txeCREATE.Text.Trim() != "")
                     {
-                        strCREATE = txeCREATE.EditValue.ToString();
+                        strCREATE = txeCREATE.Text.Trim();
                     }
 
-                    sbSQL.Append("IF NOT EXISTS(SELECT OIDCOLOR FROM ProductColor WHERE OIDCOLOR = '" + txeColorID.EditValue.ToString() + "') ");
+                    sbSQL.Append("IF NOT EXISTS(SELECT OIDCOLOR FROM ProductColor WHERE ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
                     sbSQL.Append(" BEGIN ");
                     sbSQL.Append("  INSERT INTO ProductColor(ColorNo, ColorName, ColorType, CreatedBy, CreatedDate) ");
-                    sbSQL.Append("  VALUES('" + txeColorNo.EditValue.ToString() + "', '" + txeColorName.EditValue.ToString() + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                    sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim() + "', N'" + txeColorName.Text.Trim() + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
                     sbSQL.Append(" END ");
                     sbSQL.Append("ELSE ");
                     sbSQL.Append(" BEGIN ");
                     sbSQL.Append("  UPDATE ProductColor SET ");
-                    sbSQL.Append("      ColorNo = '" + txeColorNo.EditValue.ToString() + "', ColorName = '" + txeColorName.EditValue.ToString() + "', ColorType = '" + ComType.ToString() + "' ");
-                    sbSQL.Append("  WHERE(OIDCOLOR = '" + txeColorID.EditValue.ToString() + "') ");
+                    sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim() + "', ColorName = N'" + txeColorName.Text.Trim() + "', ColorType = '" + ComType.ToString() + "' ");
+                    sbSQL.Append("  WHERE(OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
                     sbSQL.Append(" END ");
-
+                    //MessageBox.Show(sbSQL.ToString());
                     if (sbSQL.Length > 0)
                     {
                         try
@@ -182,5 +150,43 @@ namespace M03
 
             }
         }
+
+        private void txeColorNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txeColorName.Focus();
+            }
+        }
+
+        private void txeColorNo_LostFocus(object sender, EventArgs e)
+        {
+            if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Add Color")
+            {
+                StringBuilder sbSQL = new StringBuilder();
+                sbSQL.Append("SELECT ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
+                if (new DBQuery(sbSQL).getString() != "")
+                {
+                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                    txeColorNo.Text = "";
+                    txeColorNo.Focus();
+                }
+            }
+        }
+
+        private void txeColorName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cbeColorType.Focus();
+            }
+        }
+
+        private void txeColorName_LostFocus(object sender, EventArgs e)
+        {
+            txeColorName.Text = txeColorName.Text.ToUpper().Trim();
+        }
+
+
     }
 }

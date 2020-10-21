@@ -51,9 +51,10 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.cbeColorType = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txeDATE = new DevExpress.XtraEditors.TextEdit();
             this.txeCREATE = new DevExpress.XtraEditors.TextEdit();
-            this.cbeColorType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txeColorName = new DevExpress.XtraEditors.TextEdit();
             this.txeColorNo = new DevExpress.XtraEditors.TextEdit();
             this.gcColor = new DevExpress.XtraGrid.GridControl();
@@ -67,17 +68,20 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbeColorType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeDATE.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbeColorType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeColorName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeColorNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcColor)).BeginInit();
@@ -91,11 +95,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -272,9 +277,10 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.lblStatus);
+            this.layoutControl1.Controls.Add(this.cbeColorType);
             this.layoutControl1.Controls.Add(this.txeDATE);
             this.layoutControl1.Controls.Add(this.txeCREATE);
-            this.layoutControl1.Controls.Add(this.cbeColorType);
             this.layoutControl1.Controls.Add(this.txeColorName);
             this.layoutControl1.Controls.Add(this.txeColorNo);
             this.layoutControl1.Controls.Add(this.gcColor);
@@ -287,6 +293,26 @@
             this.layoutControl1.Size = new System.Drawing.Size(994, 402);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // cbeColorType
+            // 
+            this.cbeColorType.Location = new System.Drawing.Point(80, 76);
+            this.cbeColorType.MenuManager = this.ribbonControl;
+            this.cbeColorType.Name = "cbeColorType";
+            this.cbeColorType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbeColorType.Properties.NullText = "";
+            this.cbeColorType.Properties.PopupView = this.gridLookUpEdit1View;
+            this.cbeColorType.Size = new System.Drawing.Size(162, 20);
+            this.cbeColorType.StyleController = this.layoutControl1;
+            this.cbeColorType.TabIndex = 23;
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // txeDATE
             // 
@@ -308,23 +334,6 @@
             this.txeCREATE.StyleController = this.layoutControl1;
             this.txeCREATE.TabIndex = 21;
             // 
-            // cbeColorType
-            // 
-            this.cbeColorType.Location = new System.Drawing.Point(80, 76);
-            this.cbeColorType.MenuManager = this.ribbonControl;
-            this.cbeColorType.Name = "cbeColorType";
-            this.cbeColorType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbeColorType.Properties.Items.AddRange(new object[] {
-            "Finished Goods",
-            "Fabric",
-            "Accessory",
-            "Packaging"});
-            this.cbeColorType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbeColorType.Size = new System.Drawing.Size(162, 20);
-            this.cbeColorType.StyleController = this.layoutControl1;
-            this.cbeColorType.TabIndex = 20;
-            // 
             // txeColorName
             // 
             this.txeColorName.EditValue = "";
@@ -334,7 +343,9 @@
             this.txeColorName.Properties.MaxLength = 50;
             this.txeColorName.Size = new System.Drawing.Size(362, 20);
             this.txeColorName.StyleController = this.layoutControl1;
-            this.txeColorName.TabIndex = 19;
+            this.txeColorName.TabIndex = 1;
+            this.txeColorName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeColorName_KeyDown);
+            this.txeColorName.LostFocus += new System.EventHandler(this.txeColorName_LostFocus);
             // 
             // txeColorNo
             // 
@@ -345,7 +356,9 @@
             this.txeColorNo.Properties.MaxLength = 20;
             this.txeColorNo.Size = new System.Drawing.Size(162, 20);
             this.txeColorNo.StyleController = this.layoutControl1;
-            this.txeColorNo.TabIndex = 18;
+            this.txeColorNo.TabIndex = 0;
+            this.txeColorNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeColorNo_KeyDown);
+            this.txeColorNo.LostFocus += new System.EventHandler(this.txeColorNo_LostFocus);
             // 
             // gcColor
             // 
@@ -390,11 +403,12 @@
             this.layoutControlGroup4,
             this.layoutControlItem14,
             this.layoutControlItem2,
-            this.layoutControlItem6,
             this.emptySpaceItem5,
             this.emptySpaceItem4,
             this.layoutControlItem4,
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem7,
+            this.layoutControlItem6});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
             this.Root.Size = new System.Drawing.Size(994, 402);
@@ -415,9 +429,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(163, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(237, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(279, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(205, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
@@ -471,18 +485,6 @@
             this.layoutControlItem2.Text = "Color Name";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(73, 14);
             // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.cbeColorType;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(242, 24);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(242, 24);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(242, 24);
-            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.Text = "Color Type";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(73, 14);
-            // 
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
@@ -523,6 +525,35 @@
             this.layoutControlItem3.Text = "Created By";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(73, 14);
             // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.cbeColorType;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(242, 24);
+            this.layoutControlItem7.Text = "Color Type";
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(73, 14);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.lblStatus.Appearance.Options.UseFont = true;
+            this.lblStatus.Location = new System.Drawing.Point(167, 4);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(63, 13);
+            this.lblStatus.StyleController = this.layoutControl1;
+            this.lblStatus.TabIndex = 24;
+            this.lblStatus.Text = "labelControl1";
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.lblStatus;
+            this.layoutControlItem6.Location = new System.Drawing.Point(163, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(67, 24);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
             // XtraForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -540,9 +571,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbeColorType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeDATE.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeCREATE.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbeColorType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeColorName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txeColorNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcColor)).EndInit();
@@ -556,11 +588,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,17 +630,20 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup4;
-        private DevExpress.XtraEditors.ComboBoxEdit cbeColorType;
         private DevExpress.XtraEditors.TextEdit txeColorName;
         private DevExpress.XtraEditors.TextEdit txeColorNo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem5;
         private DevExpress.XtraEditors.TextEdit txeDATE;
         private DevExpress.XtraEditors.TextEdit txeCREATE;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.GridLookUpEdit cbeColorType;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.LabelControl lblStatus;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }
