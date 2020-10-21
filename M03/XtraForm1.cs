@@ -164,13 +164,35 @@ namespace M03
             if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Add Color")
             {
                 StringBuilder sbSQL = new StringBuilder();
-                sbSQL.Append("SELECT ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
+                sbSQL.Append("SELECT TOP(1) ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
                 if (new DBQuery(sbSQL).getString() != "")
                 {
                     FUNC.msgWarning("Duplicate color no. !! Please Change.");
                     txeColorNo.Text = "";
                     txeColorNo.Focus();
                 }
+            }
+            else if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Edit Color")
+            {
+                StringBuilder sbSQL = new StringBuilder();
+                sbSQL.Append("SELECT TOP(1) OIDCOLOR ");
+                sbSQL.Append("FROM ProductColor ");
+                sbSQL.Append("WHERE (ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
+                string strCHK = new DBQuery(sbSQL).getString();
+                if (strCHK != "" && strCHK != txeColorID.Text.Trim())
+                {
+                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                    txeColorNo.Text = "";
+                    txeColorNo.Focus();
+                }
+                else
+                {
+                    txeColorName.Focus();
+                }
+            }
+            else
+            {
+                txeColorName.Focus();
             }
         }
 
