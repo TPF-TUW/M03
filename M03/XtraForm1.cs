@@ -43,7 +43,7 @@ namespace M03
             sbSQL.Append("SELECT OIDCOLOR AS No, ColorNo, ColorName, ColorType, CASE WHEN ColorType=0 THEN 'Finished Goods' ELSE CASE WHEN ColorType=1 THEN 'Fabric' ELSE CASE WHEN ColorType=2 THEN 'Accessory' ELSE CASE WHEN ColorType=3 THEN 'Packaging' ELSE '' END END END END AS ColorTypeName, CreatedBy, CreatedDate ");
             sbSQL.Append("FROM ProductColor ");
             sbSQL.Append("ORDER BY ColorType, ColorName, OIDCOLOR ");
-            new ObjDevEx.setGridControl(gcColor, gvColor, sbSQL).getData(false, false, true, true);
+            new ObjDevEx.setGridControl(gcColor, gvColor, sbSQL).getData(false, false, false, true);
 
             sbSQL.Clear();
             sbSQL.Append("SELECT '0' AS ID, 'Finished Goods' AS ColorType ");
