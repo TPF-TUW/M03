@@ -6,6 +6,7 @@ using DevExpress.Utils.Extensions;
 using DBConnection;
 using MDS00;
 using System.Drawing;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace M03
 {
@@ -120,15 +121,15 @@ namespace M03
                         strCREATE = txeCREATE.Text.Trim();
                     }
 
-                    sbSQL.Append("IF NOT EXISTS(SELECT OIDCOLOR FROM ProductColor WHERE ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
+                    sbSQL.Append("IF NOT EXISTS(SELECT OIDCOLOR FROM ProductColor WHERE ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "') ");
                     sbSQL.Append(" BEGIN ");
                     sbSQL.Append("  INSERT INTO ProductColor(ColorNo, ColorName, ColorType, CreatedBy, CreatedDate) ");
-                    sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim() + "', N'" + txeColorName.Text.Trim() + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                    sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', N'" + txeColorName.Text.Trim().Replace("'", "''") + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
                     sbSQL.Append(" END ");
                     sbSQL.Append("ELSE ");
                     sbSQL.Append(" BEGIN ");
                     sbSQL.Append("  UPDATE ProductColor SET ");
-                    sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim() + "', ColorName = N'" + txeColorName.Text.Trim() + "', ColorType = '" + ComType.ToString() + "' ");
+                    sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "', ColorType = '" + ComType.ToString() + "' ");
                     sbSQL.Append("  WHERE(OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
                     sbSQL.Append(" END ");
                     //MessageBox.Show(sbSQL.ToString());
@@ -164,7 +165,7 @@ namespace M03
             if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Add Color")
             {
                 StringBuilder sbSQL = new StringBuilder();
-                sbSQL.Append("SELECT TOP(1) ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
+                sbSQL.Append("SELECT TOP(1) ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "') ");
                 if (new DBQuery(sbSQL).getString() != "")
                 {
                     FUNC.msgWarning("Duplicate color no. !! Please Change.");
@@ -209,6 +210,28 @@ namespace M03
             txeColorName.Text = txeColorName.Text.ToUpper().Trim();
         }
 
-
+        private void gvColor_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (sender is GridView)
+            {
+                GridView gView = (GridView)sender;
+                if (!gView.IsValidRowHandle(e.RowHandle)) return;
+                int parent = gView.GetParentRowHandle(e.RowHandle);
+                if (gView.IsGroupRow(parent))
+                {
+                    for (int i = 0; i < gView.GetChildRowCount(parent); i++)
+                    {
+                        if (gView.GetChildRowHandle(parent, i) == e.RowHandle)
+                        {
+                            e.Appearance.BackColor = i % 2 == 0 ? Color.AliceBlue : Color.White;
+                        }
+                    }
+                }
+                else
+                {
+                    e.Appearance.BackColor = e.RowHandle % 2 == 0 ? Color.AliceBlue : Color.White;
+                }
+            }
+        }
     }
 }

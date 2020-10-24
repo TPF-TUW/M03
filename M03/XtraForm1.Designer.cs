@@ -51,6 +51,7 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.cbeColorType = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txeDATE = new DevExpress.XtraEditors.TextEdit();
@@ -73,7 +74,6 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -294,6 +294,17 @@
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // lblStatus
+            // 
+            this.lblStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.lblStatus.Appearance.Options.UseFont = true;
+            this.lblStatus.Location = new System.Drawing.Point(167, 4);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(63, 13);
+            this.lblStatus.StyleController = this.layoutControl1;
+            this.lblStatus.TabIndex = 24;
+            this.lblStatus.Text = "labelControl1";
+            // 
             // cbeColorType
             // 
             this.cbeColorType.Location = new System.Drawing.Point(80, 76);
@@ -379,6 +390,7 @@
             this.gvColor.OptionsView.ShowAutoFilterRow = true;
             this.gvColor.OptionsView.ShowGroupPanel = false;
             this.gvColor.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvColor_RowCellClick);
+            this.gvColor.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvColor_RowStyle);
             // 
             // txeColorID
             // 
@@ -429,9 +441,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(237, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(230, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(205, 24);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(212, 24);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
@@ -533,17 +545,6 @@
             this.layoutControlItem7.Size = new System.Drawing.Size(242, 24);
             this.layoutControlItem7.Text = "Color Type";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(73, 14);
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.lblStatus.Appearance.Options.UseFont = true;
-            this.lblStatus.Location = new System.Drawing.Point(167, 4);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(63, 13);
-            this.lblStatus.StyleController = this.layoutControl1;
-            this.lblStatus.TabIndex = 24;
-            this.lblStatus.Text = "labelControl1";
             // 
             // layoutControlItem6
             // 
