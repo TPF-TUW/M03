@@ -163,36 +163,8 @@ namespace M03
         private void txeColorNo_LostFocus(object sender, EventArgs e)
         {
             txeColorNo.Text = txeColorNo.Text.ToUpper().Trim();
-            if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Add Color")
-            {
-                StringBuilder sbSQL = new StringBuilder();
-                sbSQL.Append("SELECT TOP(1) ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "') ");
-                if (new DBQuery(sbSQL).getString() != "")
-                {
-                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
-                    txeColorNo.Text = "";
-                    txeColorNo.Focus();
-                }
-            }
-            else if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Edit Color")
-            {
-                StringBuilder sbSQL = new StringBuilder();
-                sbSQL.Append("SELECT TOP(1) OIDCOLOR ");
-                sbSQL.Append("FROM ProductColor ");
-                sbSQL.Append("WHERE (ColorNo = N'" + txeColorNo.Text.Trim() + "') ");
-                string strCHK = new DBQuery(sbSQL).getString();
-                if (strCHK != "" && strCHK != txeColorID.Text.Trim())
-                {
-                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
-                    txeColorNo.Text = "";
-                    txeColorNo.Focus();
-                }
-                else
-                {
-                    txeColorName.Focus();
-                }
-            }
-            else
+            bool chkDup = chkDuplicateNo();
+            if (chkDup == false)
             {
                 txeColorName.Focus();
             }
@@ -209,7 +181,88 @@ namespace M03
         private void txeColorName_LostFocus(object sender, EventArgs e)
         {
             txeColorName.Text = txeColorName.Text.ToUpper().Trim();
+            bool chkDup = chkDuplicateName();
+            if (chkDup == false)
+            {
+                cbeColorType.EditValue = "";
+                cbeColorType.Focus();
+            }
         }
+
+        private bool chkDuplicateNo()
+        {
+            bool chkDup = true;
+            if (txeColorNo.Text != "")
+            {
+                txeColorNo.Text = txeColorNo.Text.Trim();
+                if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Add Color")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim().Trim().Replace("'", "''") + "') ");
+                    if (new DBQuery(sbSQL).getString() != "")
+                    {
+                        FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                        txeColorNo.Text = "";
+                        txeColorNo.Focus();
+                        chkDup = false;
+                    }
+                }
+                else if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Edit Color")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) OIDCOLOR ");
+                    sbSQL.Append("FROM ProductColor ");
+                    sbSQL.Append("WHERE (ColorNo = N'" + txeColorNo.Text.Trim().Trim().Replace("'", "''") + "') ");
+                    string strCHK = new DBQuery(sbSQL).getString();
+                    if (strCHK != "" && strCHK != txeColorID.Text.Trim())
+                    {
+                        FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                        txeColorNo.Text = "";
+                        txeColorNo.Focus();
+                        chkDup = false;
+                    }
+                }
+            }
+            return chkDup;
+        }
+
+        private bool chkDuplicateName()
+        {
+            bool chkDup = true;
+            if (txeColorName.Text != "")
+            {
+                txeColorName.Text = txeColorName.Text.Trim();
+                if (txeColorName.Text.Trim() != "" && lblStatus.Text == "* Add Color")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) ColorName FROM ProductColor WHERE (ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "') ");
+                    if (new DBQuery(sbSQL).getString() != "")
+                    {
+                        FUNC.msgWarning("Duplicate color name. !! Please Change.");
+                        txeColorName.Text = "";
+                        txeColorName.Focus();
+                        chkDup = false;
+                    }
+                }
+                else if (txeColorName.Text.Trim() != "" && lblStatus.Text == "* Edit Color")
+                {
+                    StringBuilder sbSQL = new StringBuilder();
+                    sbSQL.Append("SELECT TOP(1) OIDCOLOR ");
+                    sbSQL.Append("FROM ProductColor ");
+                    sbSQL.Append("WHERE (ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "') ");
+                    string strCHK = new DBQuery(sbSQL).getString();
+                    if (strCHK != "" && strCHK != txeColorID.Text.Trim())
+                    {
+                        FUNC.msgWarning("Duplicate color name. !! Please Change.");
+                        txeColorName.Text = "";
+                        txeColorName.Focus();
+                        chkDup = false;
+                    }
+                }
+            }
+            return chkDup;
+        }
+
 
         private void gvColor_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
