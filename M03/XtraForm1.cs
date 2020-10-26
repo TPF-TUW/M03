@@ -162,6 +162,7 @@ namespace M03
 
         private void txeColorNo_LostFocus(object sender, EventArgs e)
         {
+            txeColorNo.Text = txeColorNo.Text.ToUpper().Trim();
             if (txeColorNo.Text.Trim() != "" && lblStatus.Text == "* Add Color")
             {
                 StringBuilder sbSQL = new StringBuilder();
