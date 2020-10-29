@@ -387,6 +387,8 @@
             this.gvColor.GridControl = this.gcColor;
             this.gvColor.Name = "gvColor";
             this.gvColor.OptionsBehavior.Editable = false;
+            this.gvColor.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvColor.OptionsView.EnableAppearanceOddRow = true;
             this.gvColor.OptionsView.ShowAutoFilterRow = true;
             this.gvColor.OptionsView.ShowGroupPanel = false;
             this.gvColor.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvColor_RowCellClick);
