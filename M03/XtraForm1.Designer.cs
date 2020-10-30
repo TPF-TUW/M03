@@ -391,6 +391,7 @@
             this.gvColor.OptionsView.EnableAppearanceOddRow = true;
             this.gvColor.OptionsView.ShowAutoFilterRow = true;
             this.gvColor.OptionsView.ShowGroupPanel = false;
+            this.gvColor.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvColor_RowClick);
             this.gvColor.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvColor_RowCellClick);
             this.gvColor.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvColor_RowStyle);
             // 

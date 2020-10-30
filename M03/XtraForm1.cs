@@ -72,15 +72,7 @@ namespace M03
 
         private void gvColor_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            lblStatus.Text = "* Edit Color";
-            lblStatus.ForeColor = Color.Red;
-            txeColorID.EditValue = gvColor.GetFocusedRowCellValue("No").ToString();
-            txeColorNo.EditValue = gvColor.GetFocusedRowCellValue("ColorNo").ToString();
-            txeColorName.EditValue = gvColor.GetFocusedRowCellValue("ColorName").ToString();
-            cbeColorType.EditValue = gvColor.GetFocusedRowCellValue("ColorType").ToString();
-
-            txeCREATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedBy").ToString();
-            txeDATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedDate").ToString();
+            
         }
 
         private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -279,6 +271,19 @@ namespace M03
         private void gvColor_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
         {
             
+        }
+
+        private void gvColor_RowClick(object sender, RowClickEventArgs e)
+        {
+            lblStatus.Text = "* Edit Color";
+            lblStatus.ForeColor = Color.Red;
+            txeColorID.EditValue = gvColor.GetFocusedRowCellValue("No").ToString();
+            txeColorNo.EditValue = gvColor.GetFocusedRowCellValue("ColorNo").ToString();
+            txeColorName.EditValue = gvColor.GetFocusedRowCellValue("ColorName").ToString();
+            cbeColorType.EditValue = gvColor.GetFocusedRowCellValue("ColorType").ToString();
+
+            txeCREATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedBy").ToString();
+            txeDATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedDate").ToString();
         }
     }
 }
