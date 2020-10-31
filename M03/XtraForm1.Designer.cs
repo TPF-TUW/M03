@@ -140,6 +140,7 @@
             this.bbiPrintPreview.Id = 14;
             this.bbiPrintPreview.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiPrintPreview.Name = "bbiPrintPreview";
+            this.bbiPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
             // 
             // bsiRecordsCount
             // 
@@ -186,6 +187,7 @@
             this.bbiPrint.Id = 20;
             this.bbiPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPrint.ImageOptions.SvgImage")));
             this.bbiPrint.Name = "bbiPrint";
+            this.bbiPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrint_ItemClick);
             // 
             // bbiSave
             // 
@@ -307,14 +309,14 @@
             // 
             // cbeColorType
             // 
-            this.cbeColorType.Location = new System.Drawing.Point(80, 76);
+            this.cbeColorType.Location = new System.Drawing.Point(89, 76);
             this.cbeColorType.MenuManager = this.ribbonControl;
             this.cbeColorType.Name = "cbeColorType";
             this.cbeColorType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbeColorType.Properties.NullText = "";
             this.cbeColorType.Properties.PopupView = this.gridLookUpEdit1View;
-            this.cbeColorType.Size = new System.Drawing.Size(162, 20);
+            this.cbeColorType.Size = new System.Drawing.Size(153, 20);
             this.cbeColorType.StyleController = this.layoutControl1;
             this.cbeColorType.TabIndex = 23;
             // 
@@ -327,32 +329,32 @@
             // 
             // txeDATE
             // 
-            this.txeDATE.Location = new System.Drawing.Point(80, 378);
+            this.txeDATE.Location = new System.Drawing.Point(89, 378);
             this.txeDATE.MenuManager = this.ribbonControl;
             this.txeDATE.Name = "txeDATE";
             this.txeDATE.Properties.ReadOnly = true;
-            this.txeDATE.Size = new System.Drawing.Size(362, 20);
+            this.txeDATE.Size = new System.Drawing.Size(353, 20);
             this.txeDATE.StyleController = this.layoutControl1;
             this.txeDATE.TabIndex = 22;
             // 
             // txeCREATE
             // 
-            this.txeCREATE.Location = new System.Drawing.Point(80, 354);
+            this.txeCREATE.Location = new System.Drawing.Point(89, 354);
             this.txeCREATE.MenuManager = this.ribbonControl;
             this.txeCREATE.Name = "txeCREATE";
             this.txeCREATE.Properties.ReadOnly = true;
-            this.txeCREATE.Size = new System.Drawing.Size(362, 20);
+            this.txeCREATE.Size = new System.Drawing.Size(353, 20);
             this.txeCREATE.StyleController = this.layoutControl1;
             this.txeCREATE.TabIndex = 21;
             // 
             // txeColorName
             // 
             this.txeColorName.EditValue = "";
-            this.txeColorName.Location = new System.Drawing.Point(80, 52);
+            this.txeColorName.Location = new System.Drawing.Point(89, 52);
             this.txeColorName.MenuManager = this.ribbonControl;
             this.txeColorName.Name = "txeColorName";
             this.txeColorName.Properties.MaxLength = 50;
-            this.txeColorName.Size = new System.Drawing.Size(362, 20);
+            this.txeColorName.Size = new System.Drawing.Size(353, 20);
             this.txeColorName.StyleController = this.layoutControl1;
             this.txeColorName.TabIndex = 1;
             this.txeColorName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeColorName_KeyDown);
@@ -361,11 +363,11 @@
             // txeColorNo
             // 
             this.txeColorNo.EditValue = "";
-            this.txeColorNo.Location = new System.Drawing.Point(80, 28);
+            this.txeColorNo.Location = new System.Drawing.Point(89, 28);
             this.txeColorNo.MenuManager = this.ribbonControl;
             this.txeColorNo.Name = "txeColorNo";
             this.txeColorNo.Properties.MaxLength = 20;
-            this.txeColorNo.Size = new System.Drawing.Size(162, 20);
+            this.txeColorNo.Size = new System.Drawing.Size(153, 20);
             this.txeColorNo.StyleController = this.layoutControl1;
             this.txeColorNo.TabIndex = 0;
             this.txeColorNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeColorNo_KeyDown);
@@ -397,13 +399,13 @@
             // 
             // txeColorID
             // 
-            this.txeColorID.Location = new System.Drawing.Point(80, 4);
+            this.txeColorID.Location = new System.Drawing.Point(89, 4);
             this.txeColorID.MenuManager = this.ribbonControl;
             this.txeColorID.Name = "txeColorID";
             this.txeColorID.Properties.Mask.EditMask = "d";
             this.txeColorID.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txeColorID.Properties.ReadOnly = true;
-            this.txeColorID.Size = new System.Drawing.Size(83, 20);
+            this.txeColorID.Size = new System.Drawing.Size(74, 20);
             this.txeColorID.StyleController = this.layoutControl1;
             this.txeColorID.TabIndex = 4;
             // 

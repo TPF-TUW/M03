@@ -285,5 +285,15 @@ namespace M03
             txeCREATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedBy").ToString();
             txeDATE.EditValue = gvColor.GetFocusedRowCellValue("CreatedDate").ToString();
         }
+
+        private void bbiPrintPreview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gcColor.ShowPrintPreview();
+        }
+
+        private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gcColor.Print();
+        }
     }
 }
