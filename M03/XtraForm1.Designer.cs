@@ -309,7 +309,7 @@
             // 
             // cbeColorType
             // 
-            this.cbeColorType.Location = new System.Drawing.Point(89, 76);
+            this.cbeColorType.Location = new System.Drawing.Point(89, 28);
             this.cbeColorType.MenuManager = this.ribbonControl;
             this.cbeColorType.Name = "cbeColorType";
             this.cbeColorType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -350,7 +350,7 @@
             // txeColorName
             // 
             this.txeColorName.EditValue = "";
-            this.txeColorName.Location = new System.Drawing.Point(89, 52);
+            this.txeColorName.Location = new System.Drawing.Point(89, 76);
             this.txeColorName.MenuManager = this.ribbonControl;
             this.txeColorName.Name = "txeColorName";
             this.txeColorName.Properties.MaxLength = 50;
@@ -363,7 +363,7 @@
             // txeColorNo
             // 
             this.txeColorNo.EditValue = "";
-            this.txeColorNo.Location = new System.Drawing.Point(89, 28);
+            this.txeColorNo.Location = new System.Drawing.Point(89, 52);
             this.txeColorNo.MenuManager = this.ribbonControl;
             this.txeColorNo.Name = "txeColorNo";
             this.txeColorNo.Properties.MaxLength = 20;
@@ -420,12 +420,12 @@
             this.layoutControlGroup4,
             this.layoutControlItem14,
             this.layoutControlItem2,
-            this.emptySpaceItem5,
             this.emptySpaceItem4,
             this.layoutControlItem4,
             this.layoutControlItem3,
+            this.layoutControlItem6,
             this.layoutControlItem7,
-            this.layoutControlItem6});
+            this.emptySpaceItem5});
             this.Root.Name = "Root";
             this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
             this.Root.Size = new System.Drawing.Size(994, 402);
@@ -454,7 +454,7 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(242, 24);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(242, 48);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(200, 24);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -481,7 +481,7 @@
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.txeColorNo;
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem14.MaxSize = new System.Drawing.Size(242, 24);
             this.layoutControlItem14.MinSize = new System.Drawing.Size(242, 24);
             this.layoutControlItem14.Name = "layoutControlItem14";
@@ -493,7 +493,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txeColorName;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(442, 24);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(442, 24);
             this.layoutControlItem2.Name = "layoutControlItem2";
@@ -505,7 +505,7 @@
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(242, 72);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(242, 24);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
             this.emptySpaceItem5.Size = new System.Drawing.Size(200, 24);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -545,7 +545,7 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.cbeColorType;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 72);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(242, 24);
             this.layoutControlItem7.Text = "Color Type";
