@@ -35,17 +35,15 @@ namespace M03
         private void XtraForm1_Load(object sender, EventArgs e)
         {
             bbiNew.PerformClick();
+            LoadData();
+            cbeColorType.EditValue = "";
         }
 
         private void LoadData()
         {
-            StringBuilder sbSQL = new StringBuilder();
-            sbSQL.Append("SELECT OIDCOLOR AS No, ColorNo, ColorName, ColorType, CASE WHEN ColorType=0 THEN 'Finished Goods' ELSE CASE WHEN ColorType=1 THEN 'Fabric' ELSE CASE WHEN ColorType=2 THEN 'Accessory' ELSE CASE WHEN ColorType=3 THEN 'Packaging' ELSE '' END END END END AS ColorTypeName, CreatedBy, CreatedDate ");
-            sbSQL.Append("FROM ProductColor ");
-            sbSQL.Append("ORDER BY ColorType, ColorName, OIDCOLOR ");
-            new ObjDevEx.setGridControl(gcColor, gvColor, sbSQL).getData(false, false, false, true);
+            LoadType();
 
-            sbSQL.Clear();
+            StringBuilder sbSQL = new StringBuilder();
             sbSQL.Append("SELECT '0' AS ID, 'Finished Goods' AS ColorType ");
             sbSQL.Append("UNION ALL ");
             sbSQL.Append("SELECT '1' AS ID, 'Fabric' AS ColorType ");
@@ -56,12 +54,31 @@ namespace M03
             new ObjDevEx.setGridLookUpEdit(cbeColorType, sbSQL, "ColorType", "ID").getData();
         }
 
+        private void LoadType(string ColorType = "")
+        {
+            StringBuilder sbSQL = new StringBuilder();
+            sbSQL.Append("SELECT OIDCOLOR AS No, ColorNo, ColorName, ColorType, CASE WHEN ColorType=0 THEN 'Finished Goods' ELSE CASE WHEN ColorType=1 THEN 'Fabric' ELSE CASE WHEN ColorType=2 THEN 'Accessory' ELSE CASE WHEN ColorType=3 THEN 'Packaging' ELSE '' END END END END AS ColorTypeName, CreatedBy, CreatedDate ");
+            sbSQL.Append("FROM ProductColor ");
+            if (ColorType != "")
+            {
+                sbSQL.Append("WHERE (ColorType = '" + ColorType + "') ");
+            }
+            sbSQL.Append("ORDER BY ColorType, ColorName, OIDCOLOR ");
+            new ObjDevEx.setGridControl(gcColor, gvColor, sbSQL).getData(false, false, false, true);
+        }
+
         private void NewData()
         {
             txeColorID.EditValue = new DBQuery("SELECT CASE WHEN ISNULL(MAX(OIDCOLOR), '') = '' THEN 1 ELSE MAX(OIDCOLOR) + 1 END AS NewNo FROM ProductColor").getString();
             txeColorNo.EditValue = "";
             txeColorName.EditValue = "";
-            cbeColorType.EditValue = "";
+
+            string ColorType = "";
+            if (cbeColorType.Text.Trim() != "")
+            {
+                ColorType = cbeColorType.EditValue.ToString();
+            }
+            LoadType(ColorType);
 
             lblStatus.Text = "* Add Color";
             lblStatus.ForeColor = Color.Green;
@@ -77,7 +94,7 @@ namespace M03
 
         private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            LoadData();
+            //LoadData();
             NewData();
         }
 
@@ -178,7 +195,7 @@ namespace M03
         {
             if (e.KeyCode == Keys.Enter)
             {
-                cbeColorType.Focus();
+                txeColorNo.Focus();
             }
         }
 
@@ -188,8 +205,7 @@ namespace M03
             bool chkDup = chkDuplicateName();
             if (chkDup == false)
             {
-                cbeColorType.EditValue = "";
-                cbeColorType.Focus();
+                txeColorNo.Focus();
             }
         }
 
@@ -294,6 +310,23 @@ namespace M03
         private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gcColor.Print();
+        }
+
+        private void bbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LoadData();
+            NewData();
+            cbeColorType.EditValue = "";
+        }
+
+        private void cbeColorType_EditValueChanged(object sender, EventArgs e)
+        {
+            string ColorType = "";
+            if (cbeColorType.Text.Trim() != "")
+            {
+                ColorType = cbeColorType.EditValue.ToString();
+            }
+            LoadType(ColorType);
         }
     }
 }
