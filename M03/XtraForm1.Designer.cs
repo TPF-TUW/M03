@@ -359,6 +359,7 @@
             this.txeColorName.StyleController = this.layoutControl1;
             this.txeColorName.TabIndex = 1;
             this.txeColorName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeColorName_KeyDown);
+            this.txeColorName.Leave += new System.EventHandler(this.txeColorName_Leave);
             this.txeColorName.LostFocus += new System.EventHandler(this.txeColorName_LostFocus);
             // 
             // txeColorNo
@@ -372,6 +373,7 @@
             this.txeColorNo.StyleController = this.layoutControl1;
             this.txeColorNo.TabIndex = 0;
             this.txeColorNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeColorNo_KeyDown);
+            this.txeColorNo.Leave += new System.EventHandler(this.txeColorNo_Leave);
             this.txeColorNo.LostFocus += new System.EventHandler(this.txeColorNo_LostFocus);
             // 
             // gcColor

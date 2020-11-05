@@ -183,12 +183,22 @@ namespace M03
 
         private void txeColorNo_LostFocus(object sender, EventArgs e)
         {
-            txeColorNo.Text = txeColorNo.Text.ToUpper().Trim();
-            bool chkDup = chkDuplicateNo();
-            if (chkDup == false)
+            if (txeColorNo.Text.Trim() != "")
             {
-                txeColorName.Focus();
+                txeColorNo.Text = txeColorNo.Text.ToUpper().Trim();
+                bool chkDup = chkDuplicateNo();
+                if (chkDup == true)
+                {
+                    txeColorName.Focus();
+                }
+                else
+                {
+                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                    txeColorNo.Text = "";
+                    txeColorNo.Focus();
+                }
             }
+
         }
 
         private void txeColorName_KeyDown(object sender, KeyEventArgs e)
@@ -201,13 +211,7 @@ namespace M03
 
         private void txeColorName_LostFocus(object sender, EventArgs e)
         {
-            txeColorName.Text = txeColorName.Text.ToUpper().Trim();
-            //bool chkDup = chkDuplicateName();
-            //if (chkDup == false)
-            //{
-            //    txeColorNo.Focus();
-            //}
-            txeColorNo.Focus();
+           
         }
 
         private bool chkDuplicateNo()
@@ -222,9 +226,7 @@ namespace M03
                     sbSQL.Append("SELECT TOP(1) ColorNo FROM ProductColor WHERE (ColorNo = N'" + txeColorNo.Text.Trim().Trim().Replace("'", "''") + "') ");
                     if (new DBQuery(sbSQL).getString() != "")
                     {
-                        FUNC.msgWarning("Duplicate color no. !! Please Change.");
-                        txeColorNo.Text = "";
-                        txeColorNo.Focus();
+                        
                         chkDup = false;
                     }
                 }
@@ -237,9 +239,9 @@ namespace M03
                     string strCHK = new DBQuery(sbSQL).getString();
                     if (strCHK != "" && strCHK != txeColorID.Text.Trim())
                     {
-                        FUNC.msgWarning("Duplicate color no. !! Please Change.");
-                        txeColorNo.Text = "";
-                        txeColorNo.Focus();
+                        //FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                        //txeColorNo.Text = "";
+                        //txeColorNo.Focus();
                         chkDup = false;
                     }
                 }
@@ -328,6 +330,21 @@ namespace M03
                 ColorType = cbeColorType.EditValue.ToString();
             }
             LoadType(ColorType);
+        }
+
+        private void txeColorNo_Leave(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txeColorName_Leave(object sender, EventArgs e)
+        {
+            if (txeColorName.Text.Trim() != "")
+            {
+                txeColorName.Text = txeColorName.Text.ToUpper().Trim();
+            }
+
+
         }
     }
 }
