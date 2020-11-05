@@ -202,11 +202,12 @@ namespace M03
         private void txeColorName_LostFocus(object sender, EventArgs e)
         {
             txeColorName.Text = txeColorName.Text.ToUpper().Trim();
-            bool chkDup = chkDuplicateName();
-            if (chkDup == false)
-            {
-                txeColorNo.Focus();
-            }
+            //bool chkDup = chkDuplicateName();
+            //if (chkDup == false)
+            //{
+            //    txeColorNo.Focus();
+            //}
+            txeColorNo.Focus();
         }
 
         private bool chkDuplicateNo()
