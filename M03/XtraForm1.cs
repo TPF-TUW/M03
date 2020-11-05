@@ -183,21 +183,7 @@ namespace M03
 
         private void txeColorNo_LostFocus(object sender, EventArgs e)
         {
-            if (txeColorNo.Text.Trim() != "")
-            {
-                txeColorNo.Text = txeColorNo.Text.ToUpper().Trim();
-                bool chkDup = chkDuplicateNo();
-                if (chkDup == true)
-                {
-                    txeColorName.Focus();
-                }
-                else
-                {
-                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
-                    txeColorNo.Text = "";
-                    txeColorNo.Focus();
-                }
-            }
+            
 
         }
 
@@ -334,7 +320,22 @@ namespace M03
 
         private void txeColorNo_Leave(object sender, EventArgs e)
         {
-           
+            if (txeColorNo.Text.Trim() != "")
+            {
+                txeColorNo.Text = txeColorNo.Text.ToUpper().Trim();
+                bool chkDup = chkDuplicateNo();
+                if (chkDup == true)
+                {
+                    txeColorName.Focus();
+                }
+                else
+                {
+                    txeColorNo.Text = "";
+                    txeColorNo.Focus();
+                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                    
+                }
+            }
         }
 
         private void txeColorName_Leave(object sender, EventArgs e)
