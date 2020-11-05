@@ -280,6 +280,7 @@ namespace M03
 
         private void gvColor_RowClick(object sender, RowClickEventArgs e)
         {
+            if (gvColor.IsFilterRow(e.RowHandle)) return;
             lblStatus.Text = "* Edit Color";
             lblStatus.ForeColor = Color.Red;
             txeColorID.EditValue = gvColor.GetFocusedRowCellValue("No").ToString();
