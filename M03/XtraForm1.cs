@@ -117,59 +117,68 @@ namespace M03
             }
             else
             {
-                if (FUNC.msgQuiz("Confirm save data ?") == true)
+                bool chkDup = chkDuplicateNo();
+                if (chkDup == true)
                 {
-                    StringBuilder sbSQL = new StringBuilder();
-                    //CalendarMaster
-
-                    int ComType = Convert.ToInt32(cbeColorType.EditValue.ToString());      
-
-                    string strCREATE = "0";
-                    if (txeCREATE.Text.Trim() != "")
+                    if (FUNC.msgQuiz("Confirm save data ?") == true)
                     {
-                        strCREATE = txeCREATE.Text.Trim();
-                    }
+                        StringBuilder sbSQL = new StringBuilder();
+                        //CalendarMaster
 
-                    if (lblStatus.Text == "* Add Color")
-                    {
-                        sbSQL.Append("  INSERT INTO ProductColor(ColorNo, ColorName, ColorType, CreatedBy, CreatedDate) ");
-                        sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', N'" + txeColorName.Text.Trim().Replace("'", "''") + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
-                    }
-                    else if(lblStatus.Text == "* Edit Color")
-                    {
-                        sbSQL.Append("  UPDATE ProductColor SET ");
-                        sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "', ColorType = '" + ComType.ToString() + "' ");
-                        sbSQL.Append("  WHERE (OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
-                    }
+                        int ComType = Convert.ToInt32(cbeColorType.EditValue.ToString());
 
-                    //sbSQL.Append("IF NOT EXISTS(SELECT OIDCOLOR FROM ProductColor WHERE OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
-                    //sbSQL.Append(" BEGIN ");
-                    //sbSQL.Append("  INSERT INTO ProductColor(ColorNo, ColorName, ColorType, CreatedBy, CreatedDate) ");
-                    //sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', N'" + txeColorName.Text.Trim().Replace("'", "''") + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
-                    //sbSQL.Append(" END ");
-                    //sbSQL.Append("ELSE ");
-                    //sbSQL.Append(" BEGIN ");
-                    //sbSQL.Append("  UPDATE ProductColor SET ");
-                    //sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "', ColorType = '" + ComType.ToString() + "' ");
-                    //sbSQL.Append("  WHERE (OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
-                    //sbSQL.Append(" END ");
-                    //MessageBox.Show(sbSQL.ToString());
-                    if (sbSQL.Length > 0)
-                    {
-                        try
+                        string strCREATE = "0";
+                        if (txeCREATE.Text.Trim() != "")
                         {
-                            bool chkSAVE = new DBQuery(sbSQL).runSQL();
-                            if (chkSAVE == true)
-                            {
-                                bbiNew.PerformClick();
-                                FUNC.msgInfo("Save complete.");   
-                            }
+                            strCREATE = txeCREATE.Text.Trim();
                         }
-                        catch (Exception)
-                        { }
+
+                        if (lblStatus.Text == "* Add Color")
+                        {
+                            sbSQL.Append("  INSERT INTO ProductColor(ColorNo, ColorName, ColorType, CreatedBy, CreatedDate) ");
+                            sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', N'" + txeColorName.Text.Trim().Replace("'", "''") + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                        }
+                        else if (lblStatus.Text == "* Edit Color")
+                        {
+                            sbSQL.Append("  UPDATE ProductColor SET ");
+                            sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "', ColorType = '" + ComType.ToString() + "' ");
+                            sbSQL.Append("  WHERE (OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
+                        }
+
+                        //sbSQL.Append("IF NOT EXISTS(SELECT OIDCOLOR FROM ProductColor WHERE OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
+                        //sbSQL.Append(" BEGIN ");
+                        //sbSQL.Append("  INSERT INTO ProductColor(ColorNo, ColorName, ColorType, CreatedBy, CreatedDate) ");
+                        //sbSQL.Append("  VALUES(N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', N'" + txeColorName.Text.Trim().Replace("'", "''") + "', '" + ComType.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                        //sbSQL.Append(" END ");
+                        //sbSQL.Append("ELSE ");
+                        //sbSQL.Append(" BEGIN ");
+                        //sbSQL.Append("  UPDATE ProductColor SET ");
+                        //sbSQL.Append("      ColorNo = N'" + txeColorNo.Text.Trim().Replace("'", "''") + "', ColorName = N'" + txeColorName.Text.Trim().Replace("'", "''") + "', ColorType = '" + ComType.ToString() + "' ");
+                        //sbSQL.Append("  WHERE (OIDCOLOR = '" + txeColorID.Text.Trim() + "') ");
+                        //sbSQL.Append(" END ");
+                        //MessageBox.Show(sbSQL.ToString());
+                        if (sbSQL.Length > 0)
+                        {
+                            try
+                            {
+                                bool chkSAVE = new DBQuery(sbSQL).runSQL();
+                                if (chkSAVE == true)
+                                {
+                                    bbiNew.PerformClick();
+                                    FUNC.msgInfo("Save complete.");
+                                }
+                            }
+                            catch (Exception)
+                            { }
+                        }
                     }
                 }
-
+                else
+                {
+                    txeColorNo.Text = "";
+                    txeColorNo.Focus();
+                    FUNC.msgWarning("Duplicate color no. !! Please Change.");
+                }
             }
         }
 
