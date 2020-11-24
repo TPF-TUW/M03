@@ -10,10 +10,10 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace M03
 {
-    public partial class XtraForm1 : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class M03 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private Functionality.Function FUNC = new Functionality.Function();
-        public XtraForm1()
+        public M03()
         {
             InitializeComponent();
             UserLookAndFeel.Default.StyleChanged += MyStyleChanged;
